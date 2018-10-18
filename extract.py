@@ -17,7 +17,7 @@ def download_attachments(urls, destination):
         print("{:5.2f}".format(float(len(urls)-i-1)/len(urls)*100)+" percent complete")
         url = urls[i].split(':', 1)[1].strip('\"')
         extension = get_file_type(url)
-        urllib.urlretrieve(url, os.path.join(destination, str((len(urls)-1)-i).zfill(5)+"_attachment_"+str(random.randint(0, 1000000))+extension))
+        urllib.urlretrieve(url, os.path.join(destination, str((len(urls)-1)-i).zfill(7)+"_attachment_"+str(random.randint(0, 1000000))+extension))
 
 def get_file_type(url):
     if 'png' in url:
