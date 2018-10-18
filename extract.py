@@ -2,7 +2,7 @@ import re, urllib, argparse, os, os.path, glob
 
 parser = argparse.ArgumentParser(description='RL')
 parser.add_argument('--data', default='./data/data.txt',
-                    help='(default: ./data/OT.txt) Data file downloaded using searchme. Should be filtered to contain only messages with image and video attachments')
+                    help='(default: ./data/data.txt) Data file downloaded using searchme. Should be filtered to contain only messages with image and video attachments')
 parser.add_argument('--destination', default='./dump/',
                     help='(default: ./dump/) folder to dump all downloaded attachments')
 args = parser.parse_args()
@@ -17,7 +17,7 @@ def download_attachments(urls, destination):
         print("{:5.2f}".format(float(len(urls)-i-1)/len(urls)*100)+" percent complete")
         url = urls[i].split(':', 1)[1].strip('\"')
         extension = get_file_type(url)
-        urllib.urlretrieve(url, os.path.join(destination, str((len(urls)-1)-i).zfill(5)+"_ThetaTauchGroupMe"+extension))
+        urllib.urlretrieve(url, os.path.join(destination, str((len(urls)-1)-i).zfill(5)+"_attachment"+extension))
 
 def get_file_type(url):
     if 'png' in url:
